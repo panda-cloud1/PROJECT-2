@@ -1,7 +1,6 @@
 FROM ubuntu
 WORKDIR /var/www/html
 LABEL maintainer="NasirPatel"
-RUN sudo apt update -y
 RUN sudo apt install apache2 -y 
 RUN sudo apt install zip -y
 RUN sudo apt install unzip -y
