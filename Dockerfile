@@ -12,7 +12,7 @@ RUN apt-get install -y wget unzip && \
     unzip picstudio.zip -d /var/www/html
 
 # Expose port 80 for Apache2
-EXPOSE 80
+EXPOSE 80 22
 
 # Start Apache2 on container startup
 CMD ["apache2ctl", "-D", "FOREGROUND"]
