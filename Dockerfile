@@ -1,12 +1,12 @@
-FROM ubuntu
-WORKDIR /var/www/html
-LABEL maintainer="NasirPatel"
-RUN apt update -y
-RUN apt install apache2 -y 
-RUN apt install zip -y
-RUN apt install unzip -y
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+FROM  centos:latest
+LABEL MAINTAINER="Nasir"
+RUN yum install -y httpd \
+ zip\
+ unzip
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page292/picstudio.zip /var/www/html/
-RUN unzip picstudio.zip
-RUN cp -R picstudio/* .
-EXPOSE 80 
+WORKDIR /var/www/html/
+RUN unzip photogenic.zip
+RUN cp -rvf photogenic/* .
+RUN rm -rf photogenic photogenic.zip
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80 22
