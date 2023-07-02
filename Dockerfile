@@ -5,7 +5,8 @@ RUN apt update -y
 RUN apt install apache2 -y 
 RUN apt install zip -y
 RUN apt install unzip -y
-RUN systemctl start apache2 && systemctl enable apache2
+RUN systemctl start apache2
+RUN systemctl enable apache2
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page292/picstudio.zip /var/www/html/
 RUN unzip picstudio.zip
 RUN cp -rvf picstudio/*
