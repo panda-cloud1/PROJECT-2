@@ -1,12 +1,18 @@
-FROM  centos:latest
-LABEL MAINTAINER="NASIR"
-RUN yum install -y httpd \
- zip\
- unzip
-ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
-WORKDIR /var/www/html/
-RUN unzip photogenic.zip
-RUN cp -rvf photogenic/* .
-RUN rm -rf photogenic photogenic.zip
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
-EXPOSE 80 22
+# Use the Ubuntu base image
+FROM ubuntu:latest
+
+# Install Apache2
+RUN apt-get update && \
+    apt-get install -y apache2
+
+# Download and extract zip file
+RUN apt-get install -y wget unzip && \
+    cd /var/www/html && \
+    wget https://www.free-css.com/assets/files/free-css-templates/download/page292/picstudio.zip && \
+    unzip picstudio.zip -d /var/www/html
+
+# Expose port 80 for Apache2
+EXPOSE 80
+
+# Start Apache2 on container startup
+CMD ["apache2ctl", "-D", "FOREGROUND"]
