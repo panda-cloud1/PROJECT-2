@@ -1,7 +1,10 @@
 FROM ubuntu
 WORKDIR /var/www/html
 LABEL maintainer="NasirPatel"
-RUN sudo apt update -y && sudo apt install apache2 -y && sudo apt install zip -y
+RUN sudo apt update -y
+RUN sudo apt install apache2 -y 
+RUN sudo apt install zip -y
+RUN sudo apt install unzip -y
 RUN systemctl start apache2 && systemctl enable apache2
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page292/picstudio.zip /var/www/html/
 RUN unzip picstudio.zip
