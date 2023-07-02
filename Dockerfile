@@ -8,5 +8,5 @@ RUN apt install unzip -y
 CMD ["apache2ctl", "-D", "FOREGROUND"]
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page292/picstudio.zip /var/www/html/
 RUN unzip picstudio.zip
-RUN cp -rvf picstudio/*
+RUN cp -R picstudio/* .
 EXPOSE 80 
