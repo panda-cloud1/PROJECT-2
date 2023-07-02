@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mydeployment
+spec:
+  replicas:2
+  selector:
+    matchLabels:
+      app: mycontainer
+    template:
+      metadata:
+       labels:
+        app: mycontainer
+      spec:
+        containers:
+          - name: mycontainer
+            image: nhp1993/my-project
+            imagePullPolicy: Always
+            ports:
+             - containerPort: 8080

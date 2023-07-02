@@ -1,0 +1,13 @@
+---
+- name: ansible-playbook
+  hosts: all
+  become: true
+  tasks:
+    - name: delete old deployment
+      command: kubectl delete -f /home/ubuntu/deployment.yml
+    - name: delete old service
+      command: kubectl delete -f /home/ubuntu/service.yml
+    - name: create deployment
+      command: kubectl apply -f /home/ubuntu/deployment.yml
+    - name: create service
+      command: kubectl apply -f /home/ubuntu/service.yml
