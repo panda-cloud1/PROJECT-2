@@ -1,9 +1,9 @@
 FROM  centos:latest
-LABEL MAINTAINER="Nasir"
-RUN yum install -y httpd
-RUN yum install -y zip 
-RUN yum install -y unzip
-ADD https://www.free-css.com/assets/files/free-css-templates/download/page292/picstudio.zip /var/www/html/
+LABEL MAINTAINER="NASIR"
+RUN yum install -y httpd \
+ zip\
+ unzip
+ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
 WORKDIR /var/www/html/
 RUN unzip photogenic.zip
 RUN cp -rvf photogenic/* .
